@@ -1,0 +1,16 @@
+kaytttajat
+-id
+-tunnus
+-salasana
+-rooli
+
+aiheet
+-aihe
+-tunnus
+-aika
+
+viestit
+-aihe
+-viesti
+-tunnus
+-aika
