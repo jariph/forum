@@ -25,7 +25,7 @@ public class DatabaseMachine {
     private static final String driver = "org.sqlite.JDBC";
 
     /*Tietokannan osoite ( juuressa: jdbc:sqlite:kannan_nimi.db )*/
-    private static final String databaseURL = "jdbc:sqlite:kanta.db";
+    private static final String databaseURL = "jdbc:sqlite:/Users/antti/Repot/javaEE/forum/kanta.db";
 
     /*Yhtys ja statement*/
     private Connection conn;
@@ -76,6 +76,7 @@ public class DatabaseMachine {
                   out.println("viesti = " + rs.getString("message"));
                   out.println("userID = " + rs.getString("userid"));
             }
+            
             }catch(Exception e){out.println("juttu failas!!");};
             rs.close();
             conn.close();
