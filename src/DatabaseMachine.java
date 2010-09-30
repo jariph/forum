@@ -24,7 +24,7 @@ public class DatabaseMachine {
     /*SQLite-Ajuri*/
     private static final String driver = "org.sqlite.JDBC";
 
-    /*Tietokannan osoite ( juuressa: jdbc:sqlite:kannan_nimi.db )*/
+    /*Tietokannan osoite ( Täytyy olla tarkkapolku esim: jdbc:sqlite:/Users/antti/Repot/javaEE/forum/kanta.db )*/
     private static final String databaseURL = "jdbc:sqlite:/Users/antti/Repot/javaEE/forum/kanta.db";
 
     /*Yhtys ja statement*/
