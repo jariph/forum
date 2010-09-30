@@ -14,6 +14,9 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <form action="NewServlet">
+            Napsauta painiketta saat sivun servletiltÃ¤!
+            <input type="submit" value="KÃ¤ynnistÃ¤ servlet">
+        </form>
     </body>
 </html>
