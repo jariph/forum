@@ -1,5 +1,15 @@
+html{
+        background-color: #DDDDFF;
+}
+
 body{
-	
+        background-color: #EEEEFF;
+        width: 700px;
+        margin: 0px auto;
+        color: navy;
+        padding: 1em;
+        height: 100% auto;
+        min-height: 700px;
 }
 
 #nav {
