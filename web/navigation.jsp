@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : navigation
     Created on : 5.10.2010, 12:27:15
     Author     : JariPH
@@ -14,12 +14,13 @@
         <title>Navigation</title>
     </head>
     <body>
-        <ul id='nav'>
-	<li><a href='#'>About Us</a></li>
-	<li><a href='#'>Our Products</a></li>
-        <li><a href='#'>FAQs</a></li>
-	<li><a href='#'>Contact</a></li>
-	<li><a href='#'>Login</a></li>
+        <center><h1>FOORUM</h1></center>
+        <ul id='nav' >
+	<li><a href='#'>Etusivu</a></li>
+	<li><a href='#'>Uusi topic</a></li>
+        <li><a href='#'>Haku</a></li>
+	<li><a href='#'>Palaute</a></li>
+	<li><a href='#'>Kirjaudu ulos</a></li>
         </ul>
     </body>
 </html>
