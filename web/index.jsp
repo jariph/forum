@@ -11,12 +11,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <LINK REL=StyleSheet HREF='style.css' TYPE='text/css'>
         <title>JSP Page</title>
     </head>
     <body>
-        <form action="NewServlet">
-            Napsauta painiketta saat sivun servletiltÃ¤!
-            <input type="submit" value="KÃ¤ynnistÃ¤ servlet">
-        </form>
+        <%@ include file='navigation.jsp' %>
     </body>
 </html>
