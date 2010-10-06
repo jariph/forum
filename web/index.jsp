@@ -15,6 +15,10 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%  //tarkistetaan onko käyttäjä kirjautunut
+            if(session.getAttribute("userID") == null)
+                pageContext.forward("login.jsp"); //ohjataan sisäänkirjautumiseen
+        %>
         <%@ include file='navigation.jsp' %>
     </body>
 </html>
