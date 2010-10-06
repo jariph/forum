@@ -5,6 +5,7 @@ import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+/*Tekee Stringistä MD5-hashin*/
 public class MD5 {
 
     private static String convertToHex(byte[] data) {

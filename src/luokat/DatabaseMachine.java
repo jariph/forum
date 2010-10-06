@@ -27,7 +27,7 @@ public class DatabaseMachine {
     private static final String driver = "org.sqlite.JDBC";
 
     /*Tietokannan osoite ( Täytyy olla tarkkapolku esim: jdbc:sqlite:/Users/antti/Repot/javaEE/forum/kanta.db )*/
-    private static final String databaseURL = "jdbc:sqlite:C:/foorum/forum/forum/kanta.db";
+    private static final String databaseURL = "jdbc:sqlite:C:/foorum/forum/forum/kanta.sqlite";
 
     /*Yhtys ja statement*/
     private Connection conn;
@@ -45,8 +45,6 @@ public class DatabaseMachine {
         }
         catch(ClassNotFoundException cnf){
             System.out.println( "Ajuri failas! " + cnf ); }
-
-        connect();
 }
 
     private void connect(){
@@ -57,6 +55,14 @@ public class DatabaseMachine {
         }
         catch(Exception e){
             System.out.println( "Ei saatu yhteyttä kantaan!"); }
+    }
+
+    private void disconnect(){
+        try{
+            conn.close();
+        }
+        catch(Exception e){
+            System.out.println( "Ei saatu suljettua!"); }
     }
 
     /**databaseMachinen julkinen rakentaja.
@@ -87,36 +93,43 @@ public class DatabaseMachine {
 
     /*Käyttäjän lisäys kantaan. TODO: SQL-injektioiden esto puuttuu vielä!!*/
     public void addUser(String username, String password){
+        connect();
         try{
+            String salt = "suola354Rxz";
+            String hash = MD5.makeHash(password + salt);
+            stat.executeQuery("INSERT INTO users (username, password) VALUES ('"+username+"','"+hash+"');");
+        } catch (Exception e){};
+        disconnect();
+    }
 
+    /*Käyttäjän lisäys kantaan. TODO: SQL-injektioiden esto puuttuu vielä!!*/
+    public void addTopic(String userID, String topic, String message){
+        connect();
+        try{
+            stat.executeQuery("INSERT INTO topics (userid, topic) VALUES ('"+userID+"','"+topic+"');");
+            String lastTopicID = ("(SELECT MAX(id) FROM topics)");
+            stat.executeQuery("INSERT INTO messages (topicid, userid, message) VALUES ('"+lastTopicID+"','"+userID+"','"+message+"');");
+        } catch (Exception e){};
+        disconnect();
+    }
+
+    /*Salasanan tarkistus. TODO: SQL-injektioiden esto puuttuu vielä!!*/
+    public boolean checkPassword(String username, String password){
+        boolean result = false;
+        connect();
+        try{
             String salt = "suola354Rxz";
             String hash = MD5.makeHash(password + salt);
 
-            connect();
-            stat.executeQuery("INSERT INTO users (username, password) VALUES ('"+username+"','"+hash+"');");
-            conn.close();
+            ResultSet rs = stat.executeQuery("select * from users where username = '"+username+"' AND password = '"+hash+"';");
+
+            while (rs.next())
+                result = true; //tunnus ja salis vastasivat toisiaan
+
+            rs.close();
 
         } catch (Exception e){};
+        disconnect();
+        return result;
     }
 }
-/*
-    public void printMessagesFromTopic(int topicID){
-        out.println("tulostetaan viestit...");
-        try{
-            Statement stat = conn.createStatement();
-            ResultSet rs = stat.executeQuery("select * from messages where topicid = "+topicID+";");
-
-            try{
-                while (rs.next()) {
-                  out.println("viesti = " + rs.getString("message"));
-                  out.println("userID = " + rs.getString("userid"));
-            }
-            }catch(Exception e){out.println("juttu failas!!");};
-            rs.close();
-            conn.close();
-        } catch (Exception e){out.println("statementin luonti failas!!");};
-    }
-
-
-    }
-}*/
