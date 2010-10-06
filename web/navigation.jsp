@@ -11,16 +11,17 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <LINK REL=StyleSheet HREF='style.css' TYPE='text/css'>
         <title>Navigation</title>
     </head>
     <body>
         <center><h1>FOORUM</h1></center>
         <ul id='nav' >
 	<li><a href='#'>Etusivu</a></li>
-	<li><a href='#'>Uusi topic</a></li>
+	<li><a href='newTopic.jsp'>Uusi topic</a></li>
         <li><a href='#'>Haku</a></li>
 	<li><a href='#'>Palaute</a></li>
-	<li><a href='#'>Kirjaudu ulos</a></li>
+	<li><a href='logout.jsp'>Kirjaudu ulos</a></li>
         </ul>
     </body>
 </html>
