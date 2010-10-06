@@ -45,13 +45,17 @@
 			</tr>
 		</table></center>
 	</form>
+        <br/>
+        <center>
         <%
             if(request.getParameter("submit") != null){
                 DatabaseMachine dbm = DatabaseMachine.createDatabaseMachine();
                 dbm.addUser(request.getParameter("username").toString(), request.getParameter("password").toString());
+                out.println("Kiitos rekisteröinnistä!");
+                out.println("<a href='login.jsp'>Kirjaudu sisään</a>");
             }
 
         %>
-
+        </center>
     </body>
 </html>
