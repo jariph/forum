@@ -107,8 +107,12 @@ public class DatabaseMachine {
         connect();
         try{
             stat.executeQuery("INSERT INTO topics (userid, topic) VALUES ('"+userID+"','"+topic+"');");
-            String lastTopicID = ("(SELECT MAX(id) FROM topics)");
-            stat.executeQuery("INSERT INTO messages (topicid, userid, message) VALUES ('"+lastTopicID+"','"+userID+"','"+message+"');");
+        } catch (Exception e){};
+        disconnect();
+        connect();
+        try{
+            String lastTopicID = "(SELECT MAX(id) FROM topics)";
+            stat.executeQuery("INSERT INTO messages (topicid, userid, message) VALUES ("+lastTopicID+",'"+userID+"','"+message+"');");
         } catch (Exception e){};
         disconnect();
     }
